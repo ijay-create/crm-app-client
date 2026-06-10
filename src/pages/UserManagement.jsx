@@ -48,7 +48,7 @@ export default function UserManagement() {
   // =========================
   const fetchCompanies = async () => {
     try {
-      const res = await API.get("/companies");
+      const res = await ("/companies");
 
       const data = Array.isArray(res.data)
         ? res.data

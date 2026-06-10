@@ -4,6 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 
 import API from "../api/axios";
 
+
 const AI = () => {
   const [data, setData] = useState(null);
 
