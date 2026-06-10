@@ -8,6 +8,7 @@ import {
   deleteCustomer,
 } from "../api/customers";
 import "../styles/customers.css";
+import { API_BASE_URL } from "../api/config";
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
@@ -19,11 +20,15 @@ const Customers = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  const [loading, setLoading] = useState(false);
+
   // =========================
   // LOAD CUSTOMERS
   // =========================
   const loadCustomers = async (pageNumber = 1) => {
     try {
+      setLoading(true);
+
       const res = await fetchCustomers(pageNumber);
 
       setCustomers(res.data?.data || []);
@@ -31,6 +36,15 @@ const Customers = () => {
       setPage(res.data?.page || pageNumber);
     } catch (error) {
       console.error("Load Customers Error:", error);
+
+      // AUTO LOGOUT ON 401
+      if (error?.response?.status === 401) {
+        alert("Session expired. Please login again.");
+        localStorage.clear();
+        window.location.href = "/login";
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -82,16 +96,11 @@ const Customers = () => {
   // =========================
   const filteredCustomers = customers.filter((c) => {
     const matchesSearch =
-      c.fullName
-        ?.toLowerCase()
-        .includes(search.toLowerCase()) ||
-      c.email
-        ?.toLowerCase()
-        .includes(search.toLowerCase());
+      c.fullName?.toLowerCase().includes(search.toLowerCase()) ||
+      c.email?.toLowerCase().includes(search.toLowerCase());
 
     const matchesFilter =
-      filter === "all" ||
-      c.status === filter;
+      filter === "all" || c.status === filter;
 
     return matchesSearch && matchesFilter;
   });
@@ -100,10 +109,7 @@ const Customers = () => {
   // EXPORT CSV
   // =========================
   const handleExport = () => {
-    window.open(
-      "http://localhost:5000/api/export/customers",
-      "_blank"
-    );
+    window.open(`${API_BASE_URL}/export/customers`, "_blank");
   };
 
   return (
@@ -120,23 +126,17 @@ const Customers = () => {
               type="text"
               placeholder="Search customers..."
               value={search}
-              onChange={(e) =>
-                setSearch(e.target.value)
-              }
+              onChange={(e) => setSearch(e.target.value)}
             />
 
             <select
               value={filter}
-              onChange={(e) =>
-                setFilter(e.target.value)
-              }
+              onChange={(e) => setFilter(e.target.value)}
             >
               <option value="all">All</option>
               <option value="lead">Leads</option>
               <option value="active">Active</option>
-              <option value="inactive">
-                Inactive
-              </option>
+              <option value="inactive">Inactive</option>
             </select>
 
             <button
@@ -169,23 +169,23 @@ const Customers = () => {
             </thead>
 
             <tbody>
-              {filteredCustomers.length > 0 ? (
+              {loading ? (
+                <tr>
+                  <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
+                    Loading customers...
+                  </td>
+                </tr>
+              ) : filteredCustomers.length > 0 ? (
                 filteredCustomers.map((c) => (
                   <tr key={c.id}>
                     <td>{c.fullName}</td>
-
                     <td>{c.email}</td>
-
                     <td>{c.company}</td>
-
                     <td>
-                      <span
-                        className={`status ${c.status}`}
-                      >
+                      <span className={`status ${c.status}`}>
                         {c.status}
                       </span>
                     </td>
-
                     <td>
                       <button
                         onClick={() => {
@@ -196,11 +196,7 @@ const Customers = () => {
                         Edit
                       </button>
 
-                      <button
-                        onClick={() =>
-                          handleDelete(c.id)
-                        }
-                      >
+                      <button onClick={() => handleDelete(c.id)}>
                         Delete
                       </button>
                     </td>
@@ -208,13 +204,7 @@ const Customers = () => {
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan="5"
-                    style={{
-                      textAlign: "center",
-                      padding: "20px",
-                    }}
-                  >
+                  <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
                     No customers found
                   </td>
                 </tr>
@@ -225,12 +215,9 @@ const Customers = () => {
 
         {/* PAGINATION */}
         <div className="pagination">
-
           <button
             disabled={page <= 1}
-            onClick={() =>
-              setPage((prev) => prev - 1)
-            }
+            onClick={() => setPage((prev) => prev - 1)}
           >
             Prev
           </button>
@@ -241,13 +228,10 @@ const Customers = () => {
 
           <button
             disabled={page >= totalPages}
-            onClick={() =>
-              setPage((prev) => prev + 1)
-            }
+            onClick={() => setPage((prev) => prev + 1)}
           >
             Next
           </button>
-
         </div>
 
         {/* MODAL */}
