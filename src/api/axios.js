@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({
+const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
@@ -30,18 +30,15 @@ API.interceptors.request.use(
 );
 
 /* =========================
-   RESPONSE INTERCEPTOR (FIXED)
+   RESPONSE INTERCEPTOR
 ========================= */
 API.interceptors.response.use(
   (response) => response,
   (error) => {
     const status = error.response?.status;
 
-    // ❌ DO NOT auto-refresh (this is breaking your login)
     if (status === 401) {
-      console.warn("Unauthorized request blocked (no auto logout)");
-
-      // IMPORTANT: just reject, do NOT clear storage
+      console.warn("Unauthorized request");
       return Promise.reject(error);
     }
 

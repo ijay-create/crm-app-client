@@ -8,7 +8,6 @@ import {
   deleteCustomer,
 } from "../api/customers";
 import "../styles/customers.css";
-import { API_BASE_URL } from "../api/config";
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
@@ -109,7 +108,10 @@ const Customers = () => {
   // EXPORT CSV
   // =========================
   const handleExport = () => {
-    window.open(`${API_BASE_URL}/export/customers`, "_blank");
+    window.open(
+      `${import.meta.env.VITE_API_URL}/export/customers`,
+      "_blank"
+    );
   };
 
   return (
