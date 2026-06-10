@@ -1,0 +1,191 @@
+/* =========================
+   PAGE WRAPPER (NO SIDEBAR OVERLAP + CENTERED)
+========================= */
+.leads-container {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 24px;
+  background: #f5f7fb;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   TITLE
+========================= */
+.leads-container h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+
+  margin-bottom: 18px;
+  letter-spacing: -0.3px;
+}
+
+/* =========================
+   LOADING / EMPTY TEXT
+========================= */
+.leads-container p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* =========================
+   GRID (FIXED WIDTH - NO STRETCH)
+========================= */
+.leads-grid {
+  width: 100%;
+  max-width: 1000px;   /* 🔥 prevents full stretch */
+  margin: 0 auto;
+
+  display: grid;
+
+  /* 🔥 compact CRM-style cards */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+
+  justify-content: center;
+}
+
+/* =========================
+   LEAD CARD (COMPACT CRM STYLE)
+========================= */
+.lead-card {
+  width: 100%;
+  max-width: 260px;   /* 🔥 prevents wide cards */
+
+  background: #ffffff;
+  border-radius: 14px;
+
+  padding: 14px;
+
+  border: 1px solid #eef0f3;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.2s ease;
+}
+
+/* top AI gradient bar */
+.lead-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 3px;
+  width: 100%;
+
+  background: linear-gradient(90deg, #4f46e5, #06b6d4, #22c55e);
+}
+
+.lead-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   NAME
+========================= */
+.lead-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+/* =========================
+   TEXT
+========================= */
+.lead-card p {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* =========================
+   AI SCORE BADGE
+========================= */
+.lead-card p:nth-of-type(3) {
+  display: inline-block;
+
+  margin-top: 8px;
+  padding: 4px 10px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  border-radius: 999px;
+
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* =========================
+   BUTTONS (CLEAN ROW)
+========================= */
+.lead-card button {
+  margin-top: 10px;
+  margin-right: 6px;
+
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  width: 100%;
+}
+
+/* BUTTON COLORS */
+.lead-card button:nth-of-type(1) {
+  background: #10b981;
+  color: white;
+}
+
+.lead-card button:nth-of-type(1):hover {
+  background: #059669;
+}
+
+.lead-card button:nth-of-type(2) {
+  background: #3b82f6;
+  color: white;
+}
+
+.lead-card button:nth-of-type(2):hover {
+  background: #2563eb;
+}
+
+.lead-card button:nth-of-type(3) {
+  background: #ef4444;
+  color: white;
+}
+
+.lead-card button:nth-of-type(3):hover {
+  background: #dc2626;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .leads-container {
+    padding: 14px;
+  }
+
+  .leads-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-card {
+    max-width: 100%;
+  }
+}

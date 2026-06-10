@@ -1,0 +1,30 @@
+.automation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.automation-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.automation-form input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rule-card {
+  background: white;
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}

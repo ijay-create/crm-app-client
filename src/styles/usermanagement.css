@@ -1,0 +1,178 @@
+/* =========================
+   PAGE WRAPPER
+========================= */
+
+.users-container {
+  padding: 24px;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.users-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   CREATE USER FORM
+========================= */
+
+.user-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.user-form input,
+.user-form select {
+  padding: 12px;
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.user-form input:focus,
+.user-form select:focus {
+  border-color: #2563eb;
+}
+
+.user-form button {
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px;
+  transition: 0.2s;
+}
+
+.user-form button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   USERS GRID
+========================= */
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* =========================
+   USER CARD
+========================= */
+
+.user-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: 0.2s ease;
+  border-left: 5px solid #2563eb;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+}
+
+.user-card h3 {
+  margin: 0 0 12px;
+  color: #111827;
+  font-size: 18px;
+}
+
+.user-card p {
+  margin: 8px 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.user-card strong {
+  color: #111827;
+}
+
+/* =========================
+   STATUS BADGE
+========================= */
+
+.status-active {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-disabled {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* =========================
+   ACTION BUTTON
+========================= */
+
+.user-card button {
+  margin-top: 12px;
+  width: 100%;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #ef4444;
+  color: white;
+
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.user-card button:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.users-container p {
+  color: #6b7280;
+}
+
+.page-subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .users-container {
+    padding: 16px;
+  }
+
+  .user-form {
+    grid-template-columns: 1fr;
+  }
+
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+}

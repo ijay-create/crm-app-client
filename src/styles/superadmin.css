@@ -1,0 +1,118 @@
+/* PAGE WRAPPER (fix sidebar overlap) */
+.superadmin-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* MAIN CONTAINER */
+.superadmin-container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* HEADER */
+.superadmin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.superadmin-header h1 {
+  font-size: 22px;
+  color: #111827;
+}
+
+/* SEARCH */
+.search-box {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  width: 240px;
+}
+
+.search-box:focus {
+  border-color: #4f46e5;
+}
+
+/* GRID */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* USER CARD */
+.user-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: 0.2s;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+}
+
+/* TOP ROW */
+.user-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* STATUS */
+.active {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.disabled {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* BUTTONS */
+.btn-group {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  flex: 1;
+}
+
+/* COLORS */
+.toggle {
+  background: #3b82f6;
+  color: white;
+}
+
+.reset {
+  background: #f59e0b;
+  color: white;
+}
+
+/* MUTED TEXT */
+.muted {
+  color: #6b7280;
+}

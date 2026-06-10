@@ -1,0 +1,25 @@
+.finance {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.finance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.finance-card {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .finance-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,146 @@
+/* =========================
+   TASKS PAGE WRAPPER
+========================= */
+.tasks-container {
+  padding: 24px;
+  background: #f6f8fb;
+  min-height: 100vh;
+
+  margin-left: 240px; /* matches sidebar */
+  width: calc(100% - 240px);
+
+  font-family: Arial, sans-serif;
+}
+
+/* Page title */
+.tasks-container h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* =========================
+   INPUT AREA
+========================= */
+.task-input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input-area input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+}
+
+.task-input-area input:focus {
+  border-color: #3b82f6;
+}
+
+/* Add button */
+.task-input-area button {
+  padding: 12px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.task-input-area button:hover {
+  background: #2563eb;
+}
+
+/* =========================
+   TASK LIST
+========================= */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* TASK CARD */
+.task-card {
+  background: white;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.2s;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Task text */
+.task-text {
+  font-size: 15px;
+  color: #111827;
+}
+
+/* Completed task */
+.task-text.done {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* =========================
+   TASK BUTTON
+========================= */
+.task-card button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  background: #10b981;
+  color: white;
+  transition: 0.2s;
+}
+
+.task-card button:hover {
+  opacity: 0.85;
+}
+
+/* Done state button */
+.task-card button.done {
+  background: #f59e0b;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .tasks-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 14px;
+  }
+
+  .task-input-area {
+    flex-direction: column;
+  }
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task-card button {
+    width: 100%;
+  }
+}
